@@ -2,6 +2,7 @@ const express = require('express');
 const fileupload = require('express-fileupload');
 
 const app = express();
+const port = 5001;
 app.use(fileupload());
 
 // upload endpoint
@@ -19,4 +20,4 @@ app.post('/upload', (req, res) => {
     res.json({filename: file.name, filepath: `/uploads/${file.name}`});
 })
 
-app.listen(5001, () => console.log('listening on port', 5001));
+app.listen(process.env.PORT || port, () => console.log('listening on port', port));
